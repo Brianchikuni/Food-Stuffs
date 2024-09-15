@@ -65,7 +65,7 @@ namespace Food_Stuffs
             }
             else
             {
-                SqlConnection con = new SqlConnection("Server=localhost;Database=food;User ID=root;Password=;");
+                SqlConnection con = new SqlConnection("Server=localhost;Database=food1;User ID=root;Password=;");
                 con.Open();
                 string insertQuery = "INSERT INTO users (name, username, password, email, phonenumber, occupation, gender, dateofbirth, photo) VALUES (@name, @username, @password, @email, @phonenumber, @occupation, @gender, @dateofbirth, @photo)";
                 SqlCommand cmd = new SqlCommand(insertQuery, con);

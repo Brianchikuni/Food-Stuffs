@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Data.SqlClient; // Assuming SQL Server; adjust for other databases
 using System.Drawing;
 using System.IO;
+using System.Media; // Added for sound playback
+using System.Threading.Tasks; // Added for Task.Run
 using System.Windows.Forms;
 using DPFP;
 using DPFP.Capture;
 using DPFP.Processing;
 using DPFP.Verification;
 using MySql.Data.MySqlClient;
+using NAudio.Wave;
 
 namespace Food_Stuffs
 {
@@ -53,6 +56,37 @@ namespace Food_Stuffs
                 MessageBox.Show(ex.Message);
             }
         }
+
+
+        // Method to play sound asynchronously
+        private void PlaySound(string soundFileName) // Sound playback method
+        {
+            // Define the full path for the sound file
+            string soundFilePath = Path.Combine(@"C:\Users\Administrator\Documents\Projects\Food Stuffs\images", soundFileName + ".mp3");
+
+            // Play sound asynchronously
+            Task.Run(() =>
+            {
+                try
+                {
+                    using (var audioFile = new AudioFileReader(soundFilePath))
+                    using (var outputDevice = new WaveOutEvent())
+                    {
+                        outputDevice.Init(audioFile);
+                        outputDevice.Play();
+                        while (outputDevice.PlaybackState == PlaybackState.Playing)
+                        {
+                            System.Threading.Thread.Sleep(100);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error playing sound: " + ex.Message);
+                }
+            });
+        }
+
 
         private void LoadTemplates()
         {
@@ -123,6 +157,8 @@ namespace Food_Stuffs
         public void OnReaderDisconnect(object Capture, string ReaderSerialNumber) { }
         public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback CaptureFeedback) { }
 
+        
+
         protected void Process(DPFP.Sample Sample)
         {
             DrawPicture(ConvertSampleToBitmap(Sample));
@@ -149,11 +185,13 @@ namespace Food_Stuffs
                 {
                     string templateFileName = TemplateFileNames[index];
                     DisplayStudentData(templateFileName);
+                    PlaySound("accept"); // Play accept sound
                 }
                 else
                 {
                     ClearData();
                     MessageBox.Show("Fingerprint verification failed.");
+                    PlaySound("error"); // Play error sound on failure
                 }
             }
             else
@@ -197,7 +235,7 @@ namespace Food_Stuffs
                 using (MySqlConnection connection = new MySqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = "SELECT FullName, StudentClass FROM Students WHERE template_filename = @template_filename";
+                    string query = "SELECT FullName, StudentClass, student_photo FROM Students WHERE template_filename = @template_filename";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@template_filename", templateFileName);
@@ -211,6 +249,7 @@ namespace Food_Stuffs
                             else
                             {
                                 MessageBox.Show("No student data found.");
+                                PlaySound("notfound"); // Play error sound on failure
                             }
                         }
                     }
@@ -231,6 +270,24 @@ namespace Food_Stuffs
                 string studentClass = reader["studentclass"].ToString();
                 lblFullName.Text = "Full Name: " + fullName;
                 lblStudentClass.Text = "Class: " + studentClass;
+
+
+                // Load and display the profile image from the BLOB data
+                byte[] imageData = (byte[])reader["student_photo"];
+                if (imageData != null && imageData.Length > 0)
+                {
+                    using (var ms = new MemoryStream(imageData))
+                    {
+                        ProfilePhoto.Image = Image.FromStream(ms);
+                        ProfilePhoto.SizeMode = PictureBoxSizeMode.StretchImage; // Adjust size mode as needed
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Profile image not found.");
+                    ProfilePhoto.Image = null; // Clear the image if not found
+                }
+
 
             }));
 

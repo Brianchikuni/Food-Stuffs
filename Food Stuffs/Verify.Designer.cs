@@ -34,10 +34,10 @@ namespace Food_Stuffs
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblStudentClass = new System.Windows.Forms.Label();
             this.Picture = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ProfilePhoto = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFullName
@@ -68,13 +68,13 @@ namespace Food_Stuffs
             this.Picture.TabIndex = 2;
             this.Picture.TabStop = false;
             // 
-            // pictureBox1
+            // ProfilePhoto
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(5, 172);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 232);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.ProfilePhoto.Location = new System.Drawing.Point(-2, 173);
+            this.ProfilePhoto.Name = "ProfilePhoto";
+            this.ProfilePhoto.Size = new System.Drawing.Size(176, 232);
+            this.ProfilePhoto.TabIndex = 3;
+            this.ProfilePhoto.TabStop = false;
             // 
             // dateTimePicker1
             // 
@@ -91,7 +91,7 @@ namespace Food_Stuffs
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 408);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ProfilePhoto);
             this.Controls.Add(this.Picture);
             this.Controls.Add(this.lblStudentClass);
             this.Controls.Add(this.lblFullName);
@@ -100,7 +100,7 @@ namespace Food_Stuffs
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Verify_FormClosing);
             this.Load += new System.EventHandler(this.Verify_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +111,7 @@ namespace Food_Stuffs
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblStudentClass;
         private System.Windows.Forms.PictureBox Picture;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox ProfilePhoto;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

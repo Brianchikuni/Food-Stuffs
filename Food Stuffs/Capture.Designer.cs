@@ -40,7 +40,6 @@ namespace Food_Stuffs
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.txtStudentClass = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -48,17 +47,16 @@ namespace Food_Stuffs
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.txtunacceptablefood = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -169,18 +167,6 @@ namespace Food_Stuffs
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Figure Prints";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(427, 508);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "ENROL";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(167, 103);
@@ -246,16 +232,6 @@ namespace Food_Stuffs
             this.label9.TabIndex = 23;
             this.label9.Text = "Parents email:";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(6, 22);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(184, 94);
-            this.listBox1.TabIndex = 25;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button2);
@@ -306,19 +282,6 @@ namespace Food_Stuffs
             this.label11.TabIndex = 28;
             this.label11.Text = "Date of Payment:";
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Red;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(12, 508);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(55, 23);
-            this.button4.TabIndex = 29;
-            this.button4.Text = "Back";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -332,7 +295,7 @@ namespace Food_Stuffs
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Controls.Add(this.txtunacceptablefood);
             this.groupBox3.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(326, 202);
             this.groupBox3.Name = "groupBox3";
@@ -367,6 +330,14 @@ namespace Food_Stuffs
             this.checkedListBox1.Size = new System.Drawing.Size(164, 99);
             this.checkedListBox1.TabIndex = 33;
             // 
+            // txtunacceptablefood
+            // 
+            this.txtunacceptablefood.Location = new System.Drawing.Point(0, 24);
+            this.txtunacceptablefood.Multiline = true;
+            this.txtunacceptablefood.Name = "txtunacceptablefood";
+            this.txtunacceptablefood.Size = new System.Drawing.Size(190, 97);
+            this.txtunacceptablefood.TabIndex = 0;
+            // 
             // Capture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,7 +347,6 @@ namespace Food_Stuffs
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.groupBox2);
@@ -387,7 +357,6 @@ namespace Food_Stuffs
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtStudentClass);
             this.Controls.Add(this.txtFullName);
@@ -395,7 +364,7 @@ namespace Food_Stuffs
             this.Controls.Add(this.label2);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Capture";
-            this.Text = "Capture";
+            this.Text = "Add Students";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Capture_FormClosing);
             this.Load += new System.EventHandler(this.Capture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
@@ -407,6 +376,7 @@ namespace Food_Stuffs
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,7 +394,6 @@ namespace Food_Stuffs
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.TextBox txtStudentClass;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
@@ -432,16 +401,15 @@ namespace Food_Stuffs
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.TextBox txtunacceptablefood;
     }
 }

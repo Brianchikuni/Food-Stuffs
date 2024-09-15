@@ -176,12 +176,19 @@ namespace Food_Stuffs
                     {
                         cmd.Parameters.AddWithValue("@fullname", txtFullName.Text);
                         cmd.Parameters.AddWithValue("@studentclass", txtStudentClass.Text);
-                        cmd.Parameters.AddWithValue("@template_filename", "");
+                        cmd.Parameters.AddWithValue("@template_filename", Path.GetFileNameWithoutExtension(filename));
                         cmd.Parameters.AddWithValue("@gender", comboBox1.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@term", textBox4.Text);
                         cmd.Parameters.AddWithValue("@parents_email", textBox5.Text);
-                        cmd.Parameters.AddWithValue("@unacceptable_food", "");
-                        cmd.Parameters.AddWithValue("@student_photo", "");
+                        cmd.Parameters.AddWithValue("@unacceptable_food", txtunacceptablefood.Text);
+                        if (studentphoto != null && studentphoto.Length > 0)
+                        {
+                            cmd.Parameters.AddWithValue("@student_photo", studentphoto);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@student_photo", DBNull.Value);
+                        }
                         cmd.Parameters.AddWithValue("@date_of_payment", dateTimePicker1.Value.Date);
                         cmd.Parameters.AddWithValue("@dates_of_collection", textBox5.Text);
                         cmd.ExecuteNonQuery();
@@ -256,10 +263,6 @@ namespace Food_Stuffs
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -268,13 +271,11 @@ namespace Food_Stuffs
                 {
                 // Check if the form1(main) class is properly initialized
                 this.Close();
-            }
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while trying to close the capture form: " + ex.Message);
                 }
-        
-
         }
     }
 }
